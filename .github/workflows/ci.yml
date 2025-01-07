@@ -2,7 +2,7 @@ name: Pull Request Check
 
 on:
   pull_request:
-    branches: [ main, master ]  # adjust these branch names as needed
+    branches: [ develop ] 
 
 jobs:
   test:
