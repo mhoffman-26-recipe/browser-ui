@@ -1,0 +1,15 @@
+name: Release
+description: Runs the release process on Develop branch
+
+on:
+  push:
+    branches: [ develop ]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-env
+      - uses: ./.github/actions/test
+      - uses: ./.github/actions/release
