@@ -1,0 +1,9 @@
+name: Run Tests
+description: Runs the test suite after setup is complete
+
+runs:
+  using: "composite"
+  steps:
+    - name: Run tests
+      run: npm run test
+      shell: bash
