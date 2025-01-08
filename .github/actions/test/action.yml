@@ -5,5 +5,7 @@ runs:
   using: "composite"
   steps:
     - name: Run tests
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
       run: npm run test
       shell: bash

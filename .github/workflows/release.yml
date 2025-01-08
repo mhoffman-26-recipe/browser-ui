@@ -13,3 +13,8 @@ jobs:
       - uses: ./.github/actions/setup-env
       - uses: ./.github/actions/test
       - uses: ./.github/actions/release
+      
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
