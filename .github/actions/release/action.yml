@@ -6,3 +6,4 @@ runs:
   steps:
     - name: Release
       run: npx semantic-release 
+      shell: bash
