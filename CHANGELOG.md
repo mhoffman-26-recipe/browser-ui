@@ -1,3 +1,10 @@
+## [1.1.5](https://github.com/michael-hoffman-26/recipe-vault/compare/v1.1.4...v1.1.5) (2025-01-08)
+
+
+### Bug Fixes
+
+* docker-image build trgiggerd after releas v5 ([4021d91](https://github.com/michael-hoffman-26/recipe-vault/commit/4021d91c609369faf4dd8ca1235d768baa83581e))
+
 ## [1.1.4](https://github.com/michael-hoffman-26/recipe-vault/compare/v1.1.3...v1.1.4) (2025-01-08)
 
 
