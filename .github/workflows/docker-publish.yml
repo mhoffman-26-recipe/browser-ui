@@ -2,12 +2,18 @@ name: Docker Build and Publish
 
 on:
   release:
-    types: [published, created]
+    types: [published, created, released]
 
 jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
+      - name: Debug Event, temp
+        run: |
+          echo "Event name: ${{ github.event_name }}"
+          echo "Release tag: ${{ github.event.release.tag_name }}"
+          echo "Release type: ${{ github.event.release.type }}"
+
       - name: Checkout code
         uses: actions/checkout@v4
 
