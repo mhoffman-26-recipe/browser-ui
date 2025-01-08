@@ -20,6 +20,9 @@ module.exports = {
         }],
         '@semantic-release/changelog',
         '@semantic-release/github',
-        '@semantic-release/git'
+        ['@semantic-release/git', {
+            assets: ['CHANGELOG.md', 'package.json'],
+            message: 'chore(release): ${nextRelease.version}'
+        }]    
     ]
 } 
