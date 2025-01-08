@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/michael-hoffman-26/recipe-vault/compare/v1.0.0...v1.1.0) (2025-01-08)
+
+
+### Features
+
+* add docker image release ([#7](https://github.com/michael-hoffman-26/recipe-vault/issues/7)) ([57cc356](https://github.com/michael-hoffman-26/recipe-vault/commit/57cc356fb3e4ec91c5e963d09dea8bc2cf45356f))
+
 # 1.0.0 (2025-01-08)
 
 
