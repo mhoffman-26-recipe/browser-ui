@@ -1,4 +1,9 @@
 name: Release
+description: Runs the release process on Develop branch
+
+on:
+  push:
+    branches: [ develop ]
 
 jobs:
   release:
