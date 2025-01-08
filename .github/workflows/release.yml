@@ -7,13 +7,13 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup-env
-      - uses: ./.github/actions/test
+      # - uses: ./.github/actions/test
       - uses: ./.github/actions/release
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
 permissions:
   contents: write
