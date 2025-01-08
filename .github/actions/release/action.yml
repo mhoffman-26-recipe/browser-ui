@@ -1,0 +1,8 @@
+name: Release
+description: Runs the release process
+
+runs:
+  using: "composite"
+  steps:
+    - name: Release
+      run: npx semantic-release 
