@@ -1,3 +1,10 @@
+## [1.1.6](https://github.com/michael-hoffman-26/recipe-vault/compare/v1.1.5...v1.1.6) (2025-01-09)
+
+
+### Bug Fixes
+
+* check what ([03e65da](https://github.com/michael-hoffman-26/recipe-vault/commit/03e65daceddeffee1766a4d4c91d4cefcd9f9610))
+
 ## [1.1.5](https://github.com/michael-hoffman-26/recipe-vault/compare/v1.1.4...v1.1.5) (2025-01-08)
 
 
