@@ -1,3 +1,10 @@
+## [1.1.9](https://github.com/michael-hoffman-26/recipe-vault/compare/v1.1.8...v1.1.9) (2025-01-09)
+
+
+### Bug Fixes
+
+* doing workaround trick v3 ([b708822](https://github.com/michael-hoffman-26/recipe-vault/commit/b7088224b7b17bc9a101607173437f689ca71d67))
+
 ## [1.1.8](https://github.com/michael-hoffman-26/recipe-vault/compare/v1.1.7...v1.1.8) (2025-01-09)
 
 
