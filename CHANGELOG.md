@@ -1,3 +1,10 @@
+## [1.1.7](https://github.com/michael-hoffman-26/recipe-vault/compare/v1.1.6...v1.1.7) (2025-01-09)
+
+
+### Bug Fixes
+
+* check again relaes and build docker image ([231c7d6](https://github.com/michael-hoffman-26/recipe-vault/commit/231c7d6500c66e1dda31370dfa3f576fe8eb604b))
+
 ## [1.1.6](https://github.com/michael-hoffman-26/recipe-vault/compare/v1.1.5...v1.1.6) (2025-01-09)
 
 
