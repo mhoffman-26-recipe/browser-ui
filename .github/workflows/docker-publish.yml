@@ -36,6 +36,12 @@ jobs:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      - name: Extract version
+        id: version
+        run: |
+          VERSION=$(grep '"version":' package.json | cut -d'"' -f4)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
@@ -44,4 +50,4 @@ jobs:
           platforms: linux/amd64, linux/arm64/v8
           tags: |
             ${{ vars.DOCKERHUB_USERNAME }}/recipe-vault:latest
-            ${{ vars.DOCKERHUB_USERNAME }}/recipe-vault:${{ github.ref_name }} 
+            ${{ vars.DOCKERHUB_USERNAME }}/recipe-vault:${{ steps.version.outputs.version }} 
