@@ -22,7 +22,6 @@ jobs:
     steps:
       - name: Wait for release to propagate
         run: sleep 10
-        bash: true
       - name: Trigger Docker Build Workflow
         run: |
           curl -X POST \
