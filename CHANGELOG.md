@@ -1,3 +1,10 @@
+## [1.1.12](https://github.com/michael-hoffman-26/recipe-vault/compare/v1.1.11...v1.1.12) (2025-01-09)
+
+
+### Bug Fixes
+
+* passing correct tag to image ([3debcdb](https://github.com/michael-hoffman-26/recipe-vault/commit/3debcdb630d5e59818afbd5870ae68fc8ca29854))
+
 ## [1.1.11](https://github.com/michael-hoffman-26/recipe-vault/compare/v1.1.10...v1.1.11) (2025-01-09)
 
 
