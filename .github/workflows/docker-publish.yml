@@ -2,17 +2,23 @@ name: Docker Build and Publish
 
 on:
   push:
-    tags:
-      - '**'
+    branches: [ develop ]
+    paths:
+      - 'CHANGELOG.md'
+      - 'package.json'
+      - 'package-lock.json'
 
 jobs:
   docker:
+    # todo check also all 3 files changed together 
+    if: "contains(github.event.head_commit.message, 'chore(release):') && contains(github.event.head_commit.message, '[skip ci]')"
     runs-on: ubuntu-latest
     steps:
       - name: Debug Event
         run: |
           echo "Event name: ${{ github.event_name }}"
           echo "Tag name: ${{ github.ref_name }}"
+          echo "Commit message: ${{ github.event.head_commit.message }}"
 
       - name: Checkout code
         uses: actions/checkout@v4
