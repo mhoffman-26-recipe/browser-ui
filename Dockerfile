@@ -9,12 +9,16 @@ ARG WORK_DIR
 WORKDIR $WORK_DIR
 ENV NODE_ENV=development
 COPY . .
-RUN cd frontend
-RUN npm ci 
-RUN npm run build
-RUN cd ../
-RUN npm ci
-RUN npm run build
+RUN set -ex && \
+    ls -la && \
+    cd frontend && \
+    ls -la && \
+    npm ci && \
+    npm run build && \
+    cd .. && \
+    ls -la && \
+    npm ci && \
+    npm run build
 
 FROM $NODE_IMAGE as setup-project
 ARG WORK_DIR
@@ -35,5 +39,5 @@ COPY --from=build-sources --chown=node:node $WORK_DIR/.env ./
 COPY --from=build-sources --chown=node:node $WORK_DIR/frontend/build ./frontend/build
 COPY --from=setup-project --chown=node:node $WORK_DIR/package*.json ./
 COPY --from=setup-project --chown=node:node $WORK_DIR/node_modules ./node_modules
-CMD npm run start:prod
+CMD ["npm", "run", "start:prod"]
 HEALTHCHECK --interval=5s --timeout=60s --retries=10 CMD curl -f http://localhost:9090/api/health/check || exit 1

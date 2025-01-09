@@ -1,0 +1,16 @@
+name: Release
+description: Runs the release process
+
+inputs:
+  GITHUB_TOKEN:
+    description: bla
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Release
+      env:
+        GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
+      run: npx semantic-release 
+      shell: bash

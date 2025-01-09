@@ -1,0 +1,37 @@
+name: Release
+
+on:
+  push:
+    branches: [ develop ]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-env
+      # TODO: Check if we can skip this test step
+      - uses: ./.github/actions/test
+      - uses: ./.github/actions/release
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  trigger-docker-build:
+    needs: release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for release to propagate
+        run: sleep 10
+      - name: Trigger Docker Build Workflow
+        run: |
+          curl -X POST \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            ${{ github.api_url }}/repos/${{ github.repository }}/dispatches \
+            -d '{"event_type": "trigger-docker-build", "client_payload": {"source": "release-workflow"}}'
+      
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
