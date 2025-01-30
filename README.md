@@ -1,4 +1,4 @@
-# recipe-vault
+# browser-ui-recipe
 A full-stack React and NestJS web application for managing personal recipe collections.  
 Create, organize, and explore recipe books with intuitive user interface and dynamic content management.
 
@@ -38,7 +38,7 @@ npm run start:dev
 ## CI/CD flow
 
 ```sh
-docker build -t recipe-vault:v1.0.0 .
+docker build -t browser-ui-recipe:v1.0.0 .
 
-docker run --name recipe-vault-container -d -p 80:9090 recipe-vault:v1.0.0
+docker run --name browser-ui-recipe-container -d -p 80:9090 browser-ui-recipe:v1.0.0
 ```
