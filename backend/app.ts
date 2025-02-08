@@ -19,11 +19,11 @@ export const createApp = (): express.Application => {
         if (!req.path.startsWith('/api')) {
             res.sendFile(path.join(__dirname, FRONTEND_BUILD_DIRECTORY, 'index.html'));
         } else {
-            
+
             res.status(404).json({ error: 'API route not found' });
         }
     });
-    
+
     app.use(errorHandler);
 
     return app;
