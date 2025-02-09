@@ -2,10 +2,47 @@ import { NextFunction, Request, Response } from "express";
 import { StatusCodes } from 'http-status-codes';
 
 import { UserService } from '../service/user';
-import { createUserRepo } from "../repostory/user/repostory-factory";
+import { createUserRepo } from "../repostory/user-db/repostory-factory";
+import { kafkaProducer } from '../repostory/kafka/main';
 
 const userClient = createUserRepo();
 const userService = new UserService(userClient);
+
+async function generateReportId(): Promise<string> {
+    const reportId = `REP-${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
+
+    await kafkaProducer.connect();
+
+    await kafkaProducer.send({
+        topic: 'generate-report',
+        messages: [
+            {
+                key: reportId,
+                value: JSON.stringify({
+                    reportId,
+                    timestamp: new Date().toISOString(),
+                    status: 'INITIATED'
+                })
+            },
+        ],
+    });
+
+    // without await, so the disconnect is not awaited
+    kafkaProducer.disconnect()
+
+    return reportId;
+}
+
+export async function createReport(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+        const userId = parseInt(req.params.id);
+        const reportId = await generateReportId();
+
+        res.status(StatusCodes.CREATED).json({ userId, reportId });
+    } catch (error) {
+        next(error)
+    }
+}
 
 export async function createUser(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {

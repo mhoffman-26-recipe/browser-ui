@@ -1,5 +1,5 @@
 import { UserData, RecipeData } from '../models/user';
-import { UserRepository } from '../repostory/user/user';
+import { UserRepository } from '../repostory/user-db/user';
 
 export class UserService {
     private repositoryClient: UserRepository;

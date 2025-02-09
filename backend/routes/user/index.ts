@@ -2,7 +2,7 @@ import express from 'express'
 
 import { validateRequest } from '../../validator/validator';
 import { deleteUserValidator, postUserValidator, updateUserValidator, } from './validators';
-import { createUser, deleteUser, getUsers, updateUser } from '../../controller/user';
+import { createReport, createUser, deleteUser, getUsers, updateUser } from '../../controller/user';
 import recipeRouter from './recipe';
 
 const router = express.Router();
@@ -27,6 +27,12 @@ router.put('/:id',
     updateUserValidator,
     validateRequest,
     updateUser
+);
+
+router.post('/:id/report',
+    // reportUserValidator,
+    // validateRequest,
+    createReport
 );
 
 router.use('/:userId/recipe', recipeRouter);
