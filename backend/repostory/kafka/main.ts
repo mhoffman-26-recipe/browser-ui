@@ -1,8 +1,9 @@
 import { Kafka } from 'kafkajs';
+import { KAFKA_BROKER } from '../../utils/consts';
 
 const kafka = new Kafka({
     clientId: 'recipe-world-ui',
-    brokers: ['localhost:30092'],
+    brokers: [KAFKA_BROKER],
     ssl: false,
     retry: {
         initialRetryTime: 110,
@@ -15,13 +16,13 @@ const admin = kafka.admin();
 
 const run = async () => {
     await admin.connect();
-    await kafkaProducer.connect();
-
+    
+    
     const topics = await admin.listTopics();
-    if (!topics.includes('test-topic')) {
+    if (!topics.includes('generate-report')) {
         await admin.createTopics({
             topics: [{
-                topic: 'test-topic',
+                topic: 'generate-report',
                 numPartitions: 1,
                 replicationFactor: 1
             }]
@@ -29,29 +30,11 @@ const run = async () => {
         console.log('Topic created successfully');
     }
 
-    await kafkaProducer.send({
-        topic: 'test-topic',
-        messages: [{ key: 'key1', value: 'Hello Kafka!' }],
-    });
-    console.log('Message sent!');
-
-    await kafkaProducer.disconnect();
     await admin.disconnect();
 };
 
 run().catch(console.error);
-// Connect the producer when the module is loaded
-// const connectProducer = async () => {
-//     try {
-//         await kafkaProducer.connect();
-//         console.log('Successfully connected to Kafka');
-//     } catch (error) {
-//         console.error('Failed to connect to Kafka:', error);
-//     }
-// };
 
-// // Connect immediately
-// connectProducer();
 
 // Handle graceful shutdown
 process.on('SIGTERM', async () => {

@@ -14,7 +14,7 @@ async function generateReportId(): Promise<string> {
     await kafkaProducer.connect();
 
     await kafkaProducer.send({
-        topic: 'test-topic',
+        topic: 'generate-report',
         messages: [
             {
                 key: reportId,
