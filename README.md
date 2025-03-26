@@ -18,8 +18,8 @@ Create, organize, and explore recipe books with intuitive user interface and dyn
 ### Prerequisites
 
 - Node.js (use `nvm` for version management)
-- Docker Desktop with K8S enabled.
-- kubectl CLI
+- Docker Desktop with K8S enabled, version 4.36.0 and above.
+- kubectl CLI, version v1.30.5 and above.
 
 ### Local Kafka Setup
 
