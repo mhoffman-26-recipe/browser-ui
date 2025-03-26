@@ -45,10 +45,12 @@ Create, organize, and explore recipe books with intuitive user interface and dyn
 
 2. Clone the deploy Repo, [link](https://github.com/mhoffman-26-recipe/recipe-deploy)
 3. Now do apply for all kafka resources,
-   run this commands:
+   run this commands (order is importent):
 
 ```bash
-kubectl apply -f recipe-deploy/k8s/kafka/
+kubectl apply -f recipe-deploy/k8s/kafka/zk.yaml
+kubectl apply -f recipe-deploy/k8s/kafka/kafka-main.yaml
+kubectl apply -f recipe-deploy/k8s/kafka/k-ui.yaml
 ```
 
 4. make sure the resources created.  
@@ -66,7 +68,8 @@ kafka-ui-6cfccc4ddf-9lbmp   1/1     Running   0          7s
 zookeeper-0                 1/1     Running   0          7s
 ```
 
-4. Make sure you able to connect to the Kafka-Ui at "http://localhost:32020/"
+4. Make sure you able to connect to the Kafka-Ui at "http://localhost:32020/",   
+check that the cluster is online and you have 1 broker availible.
 
 ### Build frontend
 
