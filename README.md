@@ -6,6 +6,7 @@ Create, organize, and explore recipe books with intuitive user interface and dyn
 ## Table of Contents
 
 - [Local Installation](#local-installation)
+  - [Prerequisites](#prerequisites)
   - [Build Frontend](#build-frontend)
   - [Build the Backend Server](#build-the-backend-server)
 - [Attention Some Extra Notes](#attention-some-extra-notes)
@@ -14,20 +15,58 @@ Create, organize, and explore recipe books with intuitive user interface and dyn
 
 ## Local Installation
 
-- make sure you have `nvm` installed.
-- for working with kafka do the following
-In order to be able to work with Kafka:
-1. Edit the `/etc/hosts` file with admin/sudo privileges:
+### Prerequisites
+
+- Node.js (use `nvm` for version management)
+- Docker Desktop with K8S enabled.
+- kubectl CLI
+
+### Local Kafka Setup
+
+#### Step 1: Enable Network For Kafka
+
+1. Configure Local Host Resolution
+
    ```bash
+   # Edit hosts file with admin privileges
    sudo nano /etc/hosts
-   ```
-2. Add the following line:
-   ```
+
+   # Add the following line
    127.0.0.1 kafka
    ```
-3. Save the file and exit
 
-you will need 2 terminals one for the frontend and one for the server.
+   Save the file
+
+#### Step 2: Kubernetes Local Setup
+
+1. Prerequisites:
+
+   - Ensure your Kubernetes cluster is running
+
+2. Clone the deploy Repo, [link](https://github.com/mhoffman-26-recipe/recipe-deploy)
+3. Now do apply for all kafka resources,
+   run this commands:
+
+```bash
+kubectl apply -f recipe-deploy/k8s/kafka/
+```
+
+4. make sure the resources created.  
+   run
+
+```bash
+kubectl get pods -n kafka
+```
+
+you would get output similar to this:
+```bash
+NAME                        READY   STATUS    RESTARTS   AGE
+kafka-0                     1/1     Running   0          7s
+kafka-ui-6cfccc4ddf-9lbmp   1/1     Running   0          7s
+zookeeper-0                 1/1     Running   0          7s
+```
+
+4. Make sure you able to connect to the Kafka-Ui at "http://localhost:32020/"
 
 ### Build frontend
 
