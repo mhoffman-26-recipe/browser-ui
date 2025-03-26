@@ -1,3 +1,5 @@
+## [1.1.2](https://github.com/mhoffman-26-recipe/browser-ui/compare/v1.1.1...v1.1.2) (2025-03-26)
+
 ## [1.1.1](https://github.com/mhoffman-26-recipe/browser-ui/compare/v1.1.0...v1.1.1) (2025-03-18)
 
 # [1.1.0](https://github.com/mhoffman-26-recipe/browser-ui/compare/v1.0.1...v1.1.0) (2025-02-09)
